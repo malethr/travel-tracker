@@ -1,0 +1,15 @@
+{{#partial "location"}}
+
+    <h1>Travel list!</h1>
+
+    {{#if travels}}
+        {{#each travels}}
+            <p>Current location:</p>
+            <p>{{location}}<a href ="/travels/{{id}}">check more...</a></p>
+        {{/each}}
+    {{else}}
+        <p>No location!</p>
+    {{/if}}
+{{/partial}}
+
+{{> layout.hbs}}
