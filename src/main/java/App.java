@@ -1,3 +1,4 @@
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import models.Travel;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -39,6 +40,13 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //get: show an individual post
+        get("/travels/:id", (req,res)->{
+           Map<String, Object> model = new HashMap<>();
+           int idOfTravelToFind = Integer.parseInt(req.params("id"));
+           Travel foundTravel = Travel.findById(idOfTravelToFind);
+           model.put("travel",foundTravel);
+           return new ModelAndView(model, "travel-detail.hbs");
+        }, new HandlebarsTemplateEngine());
 
         //get: show a form to update a post
 
